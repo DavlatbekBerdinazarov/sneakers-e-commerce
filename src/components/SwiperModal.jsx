@@ -5,8 +5,9 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import { IoMdClose } from "react-icons/io";
 
-export default function SwiperProduct({handleShow}) {
+export default function SwiperModal({ handleClose }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   const thumbImages = [
@@ -18,6 +19,7 @@ export default function SwiperProduct({handleShow}) {
 
   return (
     <div>
+      <IoMdClose style={{ top:'-20px', right: '70px', position: 'absolute', cursor:'pointer' }} className="fs-2 text-warning" onClick={handleClose}/>
       <Swiper
         style={{
           "--swiper-navigation-color": "#fff",
@@ -32,7 +34,7 @@ export default function SwiperProduct({handleShow}) {
         modules={[FreeMode, Navigation, Thumbs]}
       >
         {thumbImages.map((img) => (
-          <SwiperSlide onClick={handleShow} key={img.id}>
+          <SwiperSlide key={img.id}>
             <img
               style={{ borderRadius: "15px" }}
               className="w-100 h-100"
@@ -58,7 +60,7 @@ export default function SwiperProduct({handleShow}) {
           <SwiperSlide
             style={{ height: "88px", width: "88px"}}
             key={img.id}
-            className="thumb-slide"
+            className=" rounded"
           >
             <img
               style={{ borderRadius: "7px" }}
@@ -69,17 +71,6 @@ export default function SwiperProduct({handleShow}) {
           </SwiperSlide>
         ))}
       </Swiper>
-      <style>
-        {`
-          .thumb-slide img {
-            opacity: 1;
-            transition: opacity 0.3s;
-          }
-          .thumb-slide.swiper-slide-thumb-active img {
-            opacity: 0.5;
-          }
-        `}
-      </style>
     </div>
   );
 }

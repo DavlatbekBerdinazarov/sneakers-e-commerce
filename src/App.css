@@ -23,3 +23,7 @@ li:hover{
 .navlink:hover {
   color: #ff7e1b;
 }
+ 
+.addtocart:active {
+  color: #e86c0d;
+}
